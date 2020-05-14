@@ -1,0 +1,60 @@
+{
+    "name": "fidum/laravel-dashboard-chart-tile",
+    "description": "Generic chart tiles for laravel dashboard",
+    "keywords": [
+        "fidum",
+        "laravel-dashboard",
+        "laravel-dashboard-chart-tile",
+        "chart"
+    ],
+    "homepage": "https://github.com/fidum/laravel-dashboard-chart-tile",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel Mason",
+            "email": "fidum.dev@gmail.com",
+            "homepage": "https://danielmason.co.uk",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4",
+        "consoletvs/charts": "^6.5",
+        "illuminate/console": "^7.0",
+        "illuminate/support": "^7.0",
+        "spatie/laravel-dashboard": "^1.1"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.0",
+        "nunomaduro/laravel-mojito": "^0.2.4",
+        "orchestra/testbench": "^5.0",
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Fidum\\ChartTile\\": "src",
+            "Fidum\\ChartTile\\Examples\\": "examples"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Fidum\\ChartTile\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Fidum\\ChartTile\\ChartTileServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
