@@ -32,14 +32,15 @@ return [
     ],
 ];
 ```
-
-So that you can easily add your datasets and configure your charts exactly how you want them you need to create 
-chart factory classes that implements the `Fidum\ChartTile\Contracts\ChartFactory` interface. This tile uses 
-`chart.js` to render the charts with the help of `Laravel Charts`  package see links to 
+This tile uses  `chart.js` to render the charts with the help of `Laravel Charts`  package see links to 
 documentation for both below:  
 
 - [Laravel Charts Documentation](https://charts.erik.cat/)
 - [Chart.js Documentation](https://www.chartjs.org/docs/latest/charts/)
+
+
+So that you can easily add your datasets and configure your charts exactly how you want them you need to create 
+chart factory classes that implements the `Fidum\ChartTile\Contracts\ChartFactory` interface. 
 
 See chart factory example below:
 
