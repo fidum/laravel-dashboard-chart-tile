@@ -38,7 +38,7 @@ class ChartComponentTest extends TestCase
         ;
 
         (new ViewAssertion($html))
-            ->contains('<canvas style="display: none;" id="chart-abc"  height=\'100%\' ></canvas>')
+            ->contains('<canvas style="display: none;" id="chart_abc"  height=\'100%\' ></canvas>')
         ;
     }
 }
