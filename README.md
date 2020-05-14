@@ -86,12 +86,12 @@ class ExampleBarChart implements ChartFactory
 }
 ```
 
-In your dashboard view you can use the below component as many times as needed. Pass your chart factory class 
+In your dashboard view you can use the below component as many times as needed. Pass your chart class 
 reference to the component and that will be used to generate the chart.
 
 ```html
 <x-dashboard>
-    <livewire:chart-tile chartFactory="{{App\Charts\CustomChartFactory::class}}" height="100%" position="a1:a3" />
+    <livewire:chart-tile chartFactory="{{App\Charts\DailyUsersChart::class}}" height="100%" position="a1:a3" />
 </x-dashboard>
 ```
 
