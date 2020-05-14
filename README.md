@@ -70,7 +70,7 @@ class ExampleBarChart implements ChartFactory
             ];
         });
 
-        $chart =(new Chart())
+        $chart = (new Chart)
             ->labels($data->pluck('x')->toArray())
             ->options([
                   'responsive' => true,
