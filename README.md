@@ -40,9 +40,9 @@ documentation for both below:
 
 
 So that you can easily add your datasets and configure your charts exactly how you want them you need to create 
-chart factory classes that implements the `Fidum\ChartTile\Contracts\ChartFactory` interface. 
+a chart class that implements the `Fidum\ChartTile\Contracts\ChartFactory` interface. 
 
-See chart factory example below:
+See chart example below:
 
 ```php
 <?php
@@ -52,7 +52,7 @@ use Carbon\Carbon;
 use Fidum\ChartTile\Charts\Chart;
 use Fidum\ChartTile\Contracts\ChartFactory;
 
-class ExampleChartFactory implements ChartFactory
+class ExampleBarChart implements ChartFactory
 {
     public static function make(): ChartFactory
     {
