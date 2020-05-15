@@ -3,7 +3,6 @@
 namespace Fidum\ChartTile\Tests\Unit\Components;
 
 use Fidum\ChartTile\Components\ChartRefreshComponent;
-use Fidum\ChartTile\Examples\ExampleBarChart;
 use Fidum\ChartTile\Examples\ExamplePieChart;
 use Fidum\ChartTile\Factories\DefaultChartFactory;
 use Fidum\ChartTile\Tests\TestCase;
