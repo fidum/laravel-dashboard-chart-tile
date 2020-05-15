@@ -54,7 +54,7 @@ use Fidum\ChartTile\Contracts\ChartFactory;
 
 class ExampleBarChart implements ChartFactory
 {
-    public static function make(array $properties): ChartFactory
+    public static function make(array $settings): ChartFactory
     {
         return new static;
     }
