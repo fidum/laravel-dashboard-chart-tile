@@ -15,7 +15,7 @@ class ChartComponent extends Component
 
     public string $position;
 
-    public ?int $refreshIntervalInSeconds;
+    public int $refreshIntervalInSeconds;
 
     public string $wireId;
 
