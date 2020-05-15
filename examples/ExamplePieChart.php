@@ -7,7 +7,7 @@ use Fidum\ChartTile\Contracts\ChartFactory;
 
 class ExamplePieChart implements ChartFactory
 {
-    public static function make(): ChartFactory
+    public static function make(array $settings): ChartFactory
     {
         return new static;
     }

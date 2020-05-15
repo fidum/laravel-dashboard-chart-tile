@@ -4,7 +4,7 @@
     <div class="grid grid-rows-auto-1 gap-3 h-full">
         {!! $chart->container() !!}
     </div>
-    @livewire('chart-refresh-tile', compact('chartFactory', 'height', 'refreshIntervalInSeconds', 'wireId'))
+    @livewire('chart-refresh-tile', compact('chartFactory', 'chartSettings', 'height','refreshIntervalInSeconds', 'wireId'))
 </x-dashboard-tile>
 
 @push('scripts')

@@ -6,7 +6,7 @@ use Fidum\ChartTile\Charts\Chart;
 
 interface ChartFactory
 {
-    public static function make(): self;
+    public static function make(array $settings): self;
 
     public function chart(): Chart;
 }
