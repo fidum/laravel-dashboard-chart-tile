@@ -89,7 +89,7 @@ class ExampleBarChart implements ChartFactory
 In your dashboard view you can use the below component as many times as needed. Pass your chart class 
 reference to the component and that will be used to generate the chart.
 
-```html
+```blade
 <x-dashboard>
     <livewire:chart-tile chartFactory="{{App\Charts\DailyUsersChart::class}}" height="100%" position="a1:a3" />
 </x-dashboard>
@@ -99,7 +99,7 @@ reference to the component and that will be used to generate the chart.
 We have provided some chart factory examples to help get you started [here](examples). 
 You can use the below dashboard layout to have an instant showcase of these examples:
 
-```html
+```blade
 <x-dashboard>
     <livewire:chart-tile chartFactory="{{\Fidum\ChartTile\Examples\ExamplePieChart::class}}" position="a1:a2" height="140%"/>
     <livewire:chart-tile chartFactory="{{\Fidum\ChartTile\Examples\ExampleDoughnutChart::class}}" position="b1:b2" height="140%"/>
