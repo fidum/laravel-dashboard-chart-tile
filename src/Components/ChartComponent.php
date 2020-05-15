@@ -11,7 +11,7 @@ class ChartComponent extends Component
 {
     public string $chartFactory;
 
-    public array $chartProperties;
+    public array $chartSettings;
 
     public string $height;
 
@@ -26,13 +26,13 @@ class ChartComponent extends Component
         string $height = '100%',
         string $chartFactory = null,
         string $wireId = null,
-        array $chartProperties = [],
+        array $chartSettings = [],
         int $refreshIntervalInSeconds = null
     ) {
         $this->height = $height;
         $this->position = $position;
         $this->chartFactory = $chartFactory ?? DefaultChartFactory::class;
-        $this->chartProperties = $chartProperties;
+        $this->chartSettings = $chartSettings;
         $this->wireId = $wireId ?? $this->id;
 
         $this->refreshIntervalInSeconds = $refreshIntervalInSeconds
@@ -49,7 +49,7 @@ class ChartComponent extends Component
         /** @var ChartTileContract $factory */
         $factory = $this->chartFactory;
 
-        return $factory::make($this->chartProperties)
+        return $factory::make($this->chartSettings)
             ->chart()
             ->height($this->height)
             ->id($this->wireId);
