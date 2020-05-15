@@ -91,9 +91,14 @@ reference to the component and that will be used to generate the chart.
 
 ```blade
 <x-dashboard>
-    <livewire:chart-tile chartFactory="{{App\Charts\DailyUsersChart::class}}" height="100%" position="a1:a3" />
+    <livewire:chart-tile chartFactory="{{App\Charts\DailyUsersChart::class}}" position="a1:a3" />
 </x-dashboard>
 ```
+
+Here are some additional attributes you can optionally use: 
+- `height` sets the height of the chart, depending on your dashboard layout you may need to adjust this (defaults to `100%`).
+
+- `refreshIntervalInSeconds` use this to override the refresh rate of an individual tile (defaults to `300` seconds) 
 
 ## Examples
 We have provided some chart factory examples to help get you started [here](examples). 

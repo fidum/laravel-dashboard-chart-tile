@@ -15,18 +15,24 @@ class ChartComponent extends Component
 
     public string $position;
 
+    public ?int $refreshIntervalInSeconds;
+
     public string $wireId;
 
     public function mount(
         string $position = '',
         string $height = '100%',
         string $chartFactory = null,
-        string $wireId = null
+        string $wireId = null,
+        int $refreshIntervalInSeconds = null
     ) {
         $this->height = $height;
         $this->position = $position;
         $this->chartFactory = $chartFactory ?? DefaultChartFactory::class;
         $this->wireId = $wireId ?? $this->id;
+
+        $this->refreshIntervalInSeconds = $refreshIntervalInSeconds
+            ?? config('dashboard.tiles.charts.refresh_interval_in_seconds', 300);
     }
 
     public function render()
@@ -51,7 +57,6 @@ class ChartComponent extends Component
             'wireId' => $this->wireId,
             'chart' => $this->chart(),
             'chartFactory' => $this->chartFactory,
-            'refreshIntervalInSeconds' => config('dashboard.tiles.charts.refresh_interval_in_seconds', 300),
         ];
     }
 }
