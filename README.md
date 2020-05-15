@@ -95,7 +95,7 @@ reference to the component and that will be used to generate the chart.
 </x-dashboard>
 ```
 
-Here are some additional attributes you can optionally use: 
+### Optional properties: 
 - `height` sets the height of the chart, depending on your dashboard layout you may need to adjust this (defaults to `100%`).
 
 - `refreshIntervalInSeconds` use this to override the refresh rate of an individual tile (defaults to `300` seconds) 
