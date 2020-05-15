@@ -96,8 +96,9 @@ reference to the component and that will be used to generate the chart.
 ```
 
 ### Optional properties: 
-- `chartSettings` optional key value array of settings that is passed to your chart `static::make` method. To use this you will
-have to use `@livewire` syntax over the component syntax in order set the array value. 
+- `chartSettings` optional key value array of settings that is passed to your chart `static::make` method. 
+**Only use this for passing simple values `strings`, `integers`, `arrays` etc.** 
+To use this you will have to use `@livewire` syntax over the component syntax in order set the array value. 
 ```blade
 @livewire('chart-tile', [
     'chartFactory' => App\Charts\DailyUsersChart::class, 
