@@ -54,7 +54,7 @@ use Fidum\ChartTile\Contracts\ChartFactory;
 
 class ExampleBarChart implements ChartFactory
 {
-    public static function make(): ChartFactory
+    public static function make(array $properties): ChartFactory
     {
         return new static;
     }
@@ -96,6 +96,15 @@ reference to the component and that will be used to generate the chart.
 ```
 
 ### Optional properties: 
+- `chartProperties` optional key value array of properties that is passed to your chart `static::make` method. To use this you will
+have to use `@livewire` syntax over the component syntax in order set the array value. 
+```blade
+@livewire('chart-tile', [
+    'chartFactory' => App\Charts\DailyUsersChart::class, 
+    'chartProperties' => ['type' => 'customer'],
+])
+```
+
 - `height` sets the height of the chart, depending on your dashboard layout you may need to adjust this (defaults to `100%`).
 
 - `refreshIntervalInSeconds` use this to override the refresh rate of an individual tile (defaults to `300` seconds) 

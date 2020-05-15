@@ -11,7 +11,7 @@ class DefaultChartFactoryTest extends TestCase
 {
     public function testMake()
     {
-        $factory = DefaultChartFactory::make();
+        $factory = DefaultChartFactory::make([]);
 
         $this->assertInstanceOf(DefaultChartFactory::class, $factory);
     }
@@ -20,7 +20,7 @@ class DefaultChartFactoryTest extends TestCase
     {
         Carbon::setTestNow('2020-05-13');
 
-        $chart = DefaultChartFactory::make()->chart();
+        $chart = DefaultChartFactory::make([])->chart();
 
         $this->assertInstanceOf(Chart::class, $chart);
         $this->assertSame($this->expectedLabels(), $chart->labels);
