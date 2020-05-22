@@ -15,7 +15,7 @@ class Chart extends BaseChart
 
     public function id(string $id): self
     {
-        $this->id = 'chart_' . $id;
+        $this->id = 'chart_'.$id;
 
         return $this;
     }

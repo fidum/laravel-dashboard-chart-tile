@@ -1,4 +1,5 @@
 <?php
+
 namespace Fidum\ChartTile\Tests;
 
 use ConsoleTVs\Charts\ChartsServiceProvider;
