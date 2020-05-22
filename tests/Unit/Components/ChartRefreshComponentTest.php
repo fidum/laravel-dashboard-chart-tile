@@ -34,16 +34,14 @@ class ChartRefreshComponentTest extends TestCase
         $html = $result->payload['dom'];
         $wireId = $result->payload['id'];
 
-        $result->assertEmitted('chartDataRefreshed' . $wireId)
+        $result->assertEmitted('chartDataRefreshed'.$wireId)
             ->assertViewHas('chartFactory', DefaultChartFactory::class)
             ->assertViewHas('refreshIntervalInSeconds', 300)
             ->assertViewHas('wireId', $wireId)
-            ->assertViewHas('height', '100%')
-        ;
+            ->assertViewHas('height', '100%');
 
         (new ViewAssertion($html))
-            ->contains('<div wire:id="'.$wireId.'" class="hidden" wire:poll.300s></div>')
-        ;
+            ->contains('<div wire:id="'.$wireId.'" class="hidden" wire:poll.300s></div>');
     }
 
     public function testRenderCustomProperties()
@@ -63,11 +61,9 @@ class ChartRefreshComponentTest extends TestCase
             ->assertViewHas('chartFactory', ExamplePieChart::class)
             ->assertViewHas('refreshIntervalInSeconds', 60)
             ->assertViewHas('wireId', 'abc')
-            ->assertViewHas('height', '75vh')
-        ;
+            ->assertViewHas('height', '75vh');
 
         (new ViewAssertion($html))
-            ->contains('<div wire:id="'.$wireId.'" class="hidden" wire:poll.60s></div>')
-        ;
+            ->contains('<div wire:id="'.$wireId.'" class="hidden" wire:poll.60s></div>');
     }
 }

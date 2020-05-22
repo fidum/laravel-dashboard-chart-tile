@@ -15,7 +15,7 @@ class ChartRefreshComponent extends ChartComponent
     {
         $chart = parent::chart();
 
-        $this->emit('chartDataRefreshed' . $this->wireId, [
+        $this->emit('chartDataRefreshed'.$this->wireId, [
             'labels' => $chart->labels,
             'datasets' => $chart->formatDatasets(),
             'options' => $chart->options,

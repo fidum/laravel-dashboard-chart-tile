@@ -36,12 +36,10 @@ class ChartComponentTest extends TestCase
         $result->assertViewHas('chartFactory', DefaultChartFactory::class)
             ->assertViewHas('refreshIntervalInSeconds', 300)
             ->assertViewHas('wireId', $wireId)
-            ->assertViewHas('height', '100%')
-        ;
+            ->assertViewHas('height', '100%');
 
         (new ViewAssertion($html))
-            ->contains('<canvas style="display: none;" id="chart_'.$wireId.'"  height=\'100%\' ></canvas>')
-        ;
+            ->contains('<canvas style="display: none;" id="chart_'.$wireId.'"  height=\'100%\' ></canvas>');
     }
 
     public function testRenderCustomProperties()
@@ -59,11 +57,9 @@ class ChartComponentTest extends TestCase
         $result->assertViewHas('chartFactory', ExamplePieChart::class)
             ->assertViewHas('refreshIntervalInSeconds', 60)
             ->assertViewHas('wireId', 'abc')
-            ->assertViewHas('height', '75vh')
-        ;
+            ->assertViewHas('height', '75vh');
 
         (new ViewAssertion($html))
-            ->contains('<canvas style="display: none;" id="chart_abc"  height=\'75vh\' ></canvas>')
-        ;
+            ->contains('<canvas style="display: none;" id="chart_abc"  height=\'75vh\' ></canvas>');
     }
 }
