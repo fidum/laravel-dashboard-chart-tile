@@ -21,7 +21,6 @@ composer require fidum/laravel-dashboard-chart-tile
 In the `dashboard` config file, you can optionally add this configuration in the `tiles` key. 
 
 ```php
-<?php
 // in config/dashboard.php
 return [
     // ...
@@ -45,7 +44,6 @@ a chart class that implements the `Fidum\ChartTile\Contracts\ChartFactory` inter
 See chart example below:
 
 ```php
-<?php
 namespace App\Charts;
 
 use Carbon\Carbon;
