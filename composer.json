@@ -22,7 +22,9 @@
         "consoletvs/charts": "^6.5",
         "illuminate/console": "^7.0",
         "illuminate/support": "^7.0",
-        "spatie/laravel-dashboard": "^1.1"
+        "spatie/laravel-dashboard": "^1.1",
+        "psalm/plugin-laravel": "^1.2",
+        "vimeo/psalm": "^3.11"
     },
     "require-dev": {
         "nunomaduro/laravel-mojito": "^0.2.4",
@@ -41,6 +43,7 @@
         }
     },
     "scripts": {
+        "psalm": "vendor/bin/psalm",
         "test": "vendor/bin/phpunit"
     },
     "config": {

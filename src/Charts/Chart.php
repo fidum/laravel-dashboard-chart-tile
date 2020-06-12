@@ -6,6 +6,7 @@ use ConsoleTVs\Charts\Classes\Chartjs\Chart as BaseChart;
 
 class Chart extends BaseChart
 {
+    /** @param int|string $height */
     public function height($height): self
     {
         $this->height = $height;
