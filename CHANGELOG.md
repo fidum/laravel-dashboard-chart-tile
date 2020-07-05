@@ -18,8 +18,8 @@ All notable changes to `fidum/laravel-dashboard-chart-tile` will be documented i
 - Changed to v7 of ConsoleTVs/Charts package. ([#7](https://github.com/fidum/laravel-dashboard-chart-tile/pull/7))
 - Changed `chartSettings` tile property name to `chartFilters`
 
-Due to all of the public API of the charts package changed there was no way to do this with backwards compatibility. 
-Hence yet another major version. 
+The v7 release of the Charts package was a complete rewrtie. Therefore it was not possible to support this version and keep it backwards compatible.
+This has resulted in another breaking change and another major version.  
 
 The `ChartFactory` interface no longer exists. All charts must now extend `Fidum\ChartTile\Charts\Chart` abstract class. 
 
