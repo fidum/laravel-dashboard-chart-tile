@@ -82,11 +82,6 @@ class DailyUsersChart extends Chart
             // etc ...
         ];
     }
-
-    public function colors(): array
-    {
-        return ['#848584'];
-    }
 }
 ```
 
