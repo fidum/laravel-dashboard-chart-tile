@@ -2,6 +2,11 @@
 
 All notable changes to `fidum/laravel-dashboard-chart-tile` will be documented in this file
 
+## 3.0.1 - 2020-07-05
+
+**Fixed**
+- Move psalm dependencies to require-dev
+
 ## 3.0.0 - 2020-07-05
 
 **Breaking**
