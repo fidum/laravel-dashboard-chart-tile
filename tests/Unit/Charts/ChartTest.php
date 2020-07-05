@@ -2,26 +2,40 @@
 
 namespace Fidum\ChartTile\Tests\Unit\Charts;
 
+use Chartisan\PHP\Chartisan;
 use Fidum\ChartTile\Charts\Chart;
 use Fidum\ChartTile\Tests\TestCase;
+use Illuminate\Http\Request;
 
 class ChartTest extends TestCase
 {
-    public function testHeight()
+    public function testDefaults()
     {
-        $chart = new Chart();
+        $chart = $this->makeClass();
 
-        $this->assertSame(400, $chart->height);
-
-        $chart->height('123vh');
-        $this->assertSame('123vh', $chart->height);
+        $this->assertInstanceOf(Chartisan::class, $chart->handler(new Request()));
+        $this->assertSame([], $chart->colors());
+        $this->assertSame('', $chart->type());
+        $this->assertSame([], $chart->options());
     }
 
-    public function testId()
+    private function makeClass(): Chart
     {
-        $chart = new Chart();
-        $chart->id('aa-bb-cc');
+        return new class extends Chart {
+            public function handler(Request $request): Chartisan
+            {
+                return Chartisan::build();
+            }
 
-        $this->assertSame('chart_aa-bb-cc', $chart->id);
+            public function type(): string
+            {
+                return '';
+            }
+
+            public function options(): array
+            {
+                return [];
+            }
+        };
     }
 }
