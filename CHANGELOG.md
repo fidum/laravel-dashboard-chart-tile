@@ -2,6 +2,11 @@
 
 All notable changes to `fidum/laravel-dashboard-chart-tile` will be documented in this file
 
+## 3.0.2 - 2020-07-05
+
+**Fixed**
+- Chart API url was incorrectly escaped in view
+
 ## 3.0.1 - 2020-07-05
 
 **Fixed**
