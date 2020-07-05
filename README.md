@@ -39,7 +39,7 @@ documentation for both below:
 
 
 So that you can easily add your datasets and configure your charts exactly how you want them you need to create 
-a chart class that extends the `Fidum\ChartTile\Chart` abstract class. 
+a chart class that extends the `Fidum\ChartTile\Charts\Chart` abstract class. 
 
 See chart example below:
 
