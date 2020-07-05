@@ -9,7 +9,9 @@ All notable changes to `fidum/laravel-dashboard-chart-tile` will be documented i
 - Changed `chartSettings` tile property name to `chartFilters`
 
 Due to all of the public API of the charts package changed there was no way to do this with backwards compatibility. 
-Hence yet another major version. You will need to remake your `Fidum\ChartTile\Charts\Chart` charts in order to upgrade.
+Hence yet another major version. 
+
+The `ChartFactory` interface no longer exists. All charts must now extend `Fidum\ChartTile\Charts\Chart` abstract class. 
 
 See README for updated documentation.
 
