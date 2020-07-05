@@ -13,7 +13,7 @@
         document.addEventListener("DOMContentLoaded", function() {
             var {{$chartVariable}} = new Chartisan({
                 el: '#{{$chartId}}',
-                url: "{{$chart->route($chartFilters)}}",
+                url: "{!! $chart->route($chartFilters) !!}",
                 hooks: new ChartisanHooks()
                     .options({options: {!! json_encode($chart->options()) !!}})
                     .datasets('{{$chart->type()}}')
