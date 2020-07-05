@@ -125,7 +125,7 @@ To use this you will have to use `@livewire` syntax over the component syntax in
 - `refreshIntervalInSeconds` use this to override the refresh rate of an individual tile (defaults to `300` seconds) 
 
 ## Examples
-We have provided some chart factory examples to help get you started [here](examples).
+We have provided some example charts to help get you started [here](examples).
 
 If you would like to use them don't forget to register them in your `AppServiceProvider::boot` method: 
 
