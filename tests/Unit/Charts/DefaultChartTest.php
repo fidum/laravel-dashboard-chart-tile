@@ -2,7 +2,6 @@
 
 namespace Fidum\ChartTile\Tests\Unit\Charts;
 
-use Chartisan\PHP\Chartisan;
 use ConsoleTVs\Charts\Registrar;
 use Fidum\ChartTile\Charts\DefaultChart;
 use Fidum\ChartTile\Tests\TestCase;

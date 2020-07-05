@@ -16,7 +16,8 @@ abstract class Chart extends BaseChart
     {
         $prefix = config('charts.global_route_name_prefix', '');
         $name = $this->routeName ?? $this->name ?? Str::snake(class_basename(static::class));
-        return route(($prefix ? "$prefix." : '') .  $name, $params);
+
+        return route(($prefix ? "$prefix." : '').$name, $params);
     }
 
     abstract public function type(): string;

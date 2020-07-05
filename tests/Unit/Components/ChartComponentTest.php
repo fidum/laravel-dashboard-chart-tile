@@ -3,9 +3,9 @@
 namespace Fidum\ChartTile\Tests\Unit\Components;
 
 use ConsoleTVs\Charts\Registrar;
+use Fidum\ChartTile\Charts\DefaultChart;
 use Fidum\ChartTile\Components\ChartComponent;
 use Fidum\ChartTile\Examples\ExamplePieChart;
-use Fidum\ChartTile\Charts\DefaultChart;
 use Fidum\ChartTile\Tests\TestCase;
 use Livewire\Livewire;
 use Livewire\Testing\TestableLivewire;
