@@ -22,14 +22,14 @@
         "consoletvs/charts": ">=7.0.4",
         "illuminate/console": "^7.0",
         "illuminate/support": "^7.0",
-        "spatie/laravel-dashboard": "^1.1",
-        "psalm/plugin-laravel": "^1.2",
-        "vimeo/psalm": "^3.11"
+        "spatie/laravel-dashboard": "^1.1"
     },
     "require-dev": {
         "nunomaduro/laravel-mojito": "^0.2.4",
         "orchestra/testbench": "^5.0",
-        "phpunit/phpunit": "^9.0"
+        "phpunit/phpunit": "^9.0",
+        "psalm/plugin-laravel": "^1.2",
+        "vimeo/psalm": "^3.11"
     },
     "autoload": {
         "psr-4": {
