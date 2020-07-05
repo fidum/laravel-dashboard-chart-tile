@@ -2,16 +2,18 @@
 
 namespace Fidum\ChartTile\Components;
 
+use ConsoleTVs\Charts\Registrar as Charts;
 use Fidum\ChartTile\Charts\Chart;
-use Fidum\ChartTile\Contracts\ChartFactory as ChartTileContract;
-use Fidum\ChartTile\Factories\DefaultChartFactory;
+use Fidum\ChartTile\Charts\DefaultChart;
+use Illuminate\Support\Facades\Request;
 use Livewire\Component;
 
 class ChartComponent extends Component
 {
-    public string $chartFactory;
+    /** @var Chart|string */
+    public string $chartClass;
 
-    public array $chartSettings;
+    public array $chartFilters;
 
     public string $height;
 
@@ -19,21 +21,19 @@ class ChartComponent extends Component
 
     public int $refreshIntervalInSeconds;
 
-    public string $wireId;
-
     public function mount(
         string $position = '',
         string $height = '100%',
-        string $chartFactory = null,
-        string $wireId = null,
-        array $chartSettings = [],
+        string $chartClass = null,
+        array $chartFilters = [],
         int $refreshIntervalInSeconds = null
     ) {
         $this->height = $height;
         $this->position = $position;
-        $this->chartFactory = $chartFactory ?? DefaultChartFactory::class;
-        $this->chartSettings = $chartSettings;
-        $this->wireId = $wireId ?? $this->id;
+        $this->chartFilters = $chartFilters;
+        $this->chartClass = $chartClass ?? DefaultChart::class;
+
+        Request::merge($this->chartFilters);
 
         $this->refreshIntervalInSeconds = $refreshIntervalInSeconds
             ?? config('dashboard.tiles.charts.refresh_interval_in_seconds', 300);
@@ -41,26 +41,9 @@ class ChartComponent extends Component
 
     public function render()
     {
-        return view('dashboard-chart-tiles::tile', $this->viewData());
-    }
-
-    protected function chart(): Chart
-    {
-        /** @var ChartTileContract $factory */
-        $factory = $this->chartFactory;
-
-        return $factory::make($this->chartSettings)
-            ->chart()
-            ->height($this->height)
-            ->id($this->wireId);
-    }
-
-    protected function viewData(): array
-    {
-        return [
-            'wireId' => $this->wireId,
-            'chart' => $this->chart(),
-            'chartFactory' => $this->chartFactory,
-        ];
+        return view('dashboard-chart-tiles::tile', [
+            'wireId' => $this->id,
+            'chart' => app($this->chartClass),
+        ]);
     }
 }

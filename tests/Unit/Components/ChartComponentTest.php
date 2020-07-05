@@ -2,9 +2,10 @@
 
 namespace Fidum\ChartTile\Tests\Unit\Components;
 
+use ConsoleTVs\Charts\Registrar;
 use Fidum\ChartTile\Components\ChartComponent;
 use Fidum\ChartTile\Examples\ExamplePieChart;
-use Fidum\ChartTile\Factories\DefaultChartFactory;
+use Fidum\ChartTile\Charts\DefaultChart;
 use Fidum\ChartTile\Tests\TestCase;
 use Livewire\Livewire;
 use Livewire\Testing\TestableLivewire;
@@ -18,13 +19,14 @@ class ChartComponentTest extends TestCase
         $component->mount('a1:a2', '100vh');
 
         $this->assertSame('a1:a2', $component->position);
-        $this->assertSame(DefaultChartFactory::class, $component->chartFactory);
-        $this->assertSame($component->id, $component->wireId);
+        $this->assertSame(DefaultChart::class, $component->chartClass);
         $this->assertSame($component->refreshIntervalInSeconds, 300);
     }
 
     public function testRender()
     {
+        app(Registrar::class)->register([DefaultChart::class]);
+
         /** @var TestableLivewire $result */
         $result = Livewire::test(ChartComponent::class)
             ->set('position', 'a1:a2')
@@ -33,33 +35,35 @@ class ChartComponentTest extends TestCase
         $html = $result->payload['dom'];
         $wireId = $result->payload['id'];
 
-        $result->assertViewHas('chartFactory', DefaultChartFactory::class)
+        $result->assertViewHas('chartClass', DefaultChart::class)
             ->assertViewHas('refreshIntervalInSeconds', 300)
             ->assertViewHas('wireId', $wireId)
             ->assertViewHas('height', '100%');
 
         (new ViewAssertion($html))
-            ->contains('<canvas style="display: none;" id="chart_'.$wireId.'"  height=\'100%\' ></canvas>');
+            ->contains('<div id="chart_'.$wireId.'" style="height: 100%"></div>');
     }
 
     public function testRenderCustomProperties()
     {
+        app(Registrar::class)->register([ExamplePieChart::class, DefaultChart::class]);
+
         /** @var TestableLivewire $result */
         $result = Livewire::test(ChartComponent::class)
-            ->set('chartFactory', ExamplePieChart::class)
+            ->set('chartClass', ExamplePieChart::class)
             ->set('refreshIntervalInSeconds', 60)
-            ->set('wireId', 'abc')
             ->set('height', '75vh')
             ->call('render');
 
         $html = $result->payload['dom'];
+        $wireId = $result->payload['id'];
 
-        $result->assertViewHas('chartFactory', ExamplePieChart::class)
+        $result->assertViewHas('chartClass', ExamplePieChart::class)
             ->assertViewHas('refreshIntervalInSeconds', 60)
-            ->assertViewHas('wireId', 'abc')
+            ->assertViewHas('wireId', $wireId)
             ->assertViewHas('height', '75vh');
 
         (new ViewAssertion($html))
-            ->contains('<canvas style="display: none;" id="chart_abc"  height=\'75vh\' ></canvas>');
+            ->contains('<div id="chart_'.$wireId.'" style="height: 75vh"></div>');
     }
 }

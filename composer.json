@@ -19,7 +19,7 @@
     ],
     "require": {
         "php": "^7.4",
-        "consoletvs/charts": "^6.5",
+        "consoletvs/charts": "^7.0",
         "illuminate/console": "^7.0",
         "illuminate/support": "^7.0",
         "spatie/laravel-dashboard": "^1.1",
