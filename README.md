@@ -14,7 +14,7 @@ Show off your charting skills with this easy to use tile. Supports line, bar, pi
 You can install the package via composer:
 
 ```bash
-composer require fidum/laravel-dashboard-chart-tile
+composer require fidum/laravel-dashboard-chart-tile:^2.0
 ```
 
 ## Usage
