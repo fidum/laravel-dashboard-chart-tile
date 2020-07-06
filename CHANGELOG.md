@@ -2,6 +2,11 @@
 
 All notable changes to `fidum/laravel-dashboard-chart-tile` will be documented in this file
 
+## 3.0.3 - 2020-07-06
+
+**Added**
+- Add support to use any frontend chart library ([#9](https://github.com/fidum/laravel-dashboard-chart-tile/pull/9))
+
 ## 3.0.2 - 2020-07-05
 
 **Fixed**
