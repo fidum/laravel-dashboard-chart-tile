@@ -13,9 +13,20 @@ class ChartTileServiceProvider extends ServiceProvider
     {
         Livewire::component('chart-tile', ChartComponent::class);
 
-        Dashboard::script('https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment-with-locales.min.js');
-        Dashboard::script('https://unpkg.com/chart.js@^2.9/dist/Chart.min.js');
-        Dashboard::script('https://unpkg.com/@chartisan/chartjs@^2.0/dist/chartisan_chartjs.js');
+        Dashboard::script(config(
+            'dashboard.tiles.charts.scripts.moment',
+            'https://unpkg.com/moment@^2.27/min/moment-with-locales.min.js'
+        ));
+
+        Dashboard::script(config(
+            'dashboard.tiles.charts.scripts.chart',
+            'https://unpkg.com/chart.js@^2.9/dist/Chart.min.js'
+        ));
+
+        Dashboard::script(config(
+            'dashboard.tiles.charts.scripts.chartisan',
+            'https://unpkg.com/@chartisan/chartjs@^2.0/dist/chartisan_chartjs.js'
+        ));
 
         $this->publishes([
             __DIR__.'/../resources/views' => resource_path('views/vendor/dashboard-chart-tiles'),
