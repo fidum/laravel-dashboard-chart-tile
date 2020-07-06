@@ -9,6 +9,14 @@ Show off your charting skills with this easy to use tile. Supports line, bar, pi
 
 ![Preview](docs/preview.png)
 
+This tile uses the [Laravel Charts](https://charts.erik.cat/) to build the charts and by default renders the charts using [Chart.js](https://www.chartjs.org/docs/latest/charts/).
+
+[Laravel Charts](https://charts.erik.cat/) is built on top of a framework agnostic package called [Chartisan](https://chartisan.dev/) which 
+allows you to choose which frontend charting library you want to use. 
+
+If you want to use a different chart library from the default then just set the appropriate script urls in the 
+`dashboard.tiles.charts.scripts` config described below in the [Usage](#usage) section.
+
 ## Installation
 
 You can install the package via composer:
@@ -26,17 +34,16 @@ return [
     // ...
     'tiles' => [
         'charts' => [     
-            'refresh_interval_in_seconds' => 300, // optional: Default: 300 seconds (5 minutes)
+            'refresh_interval_in_seconds' => 300, // Default: 300 seconds (5 minutes)
+            'scripts' => [     
+                'chart' => 'https://unpkg.com/chart.js@^2.9/dist/Chart.min.js',
+                'chartisan' => 'https://unpkg.com/@chartisan/chartjs@^2.0/dist/chartisan_chartjs.js', 
+                'moment' => 'https://unpkg.com/moment@^2.27/min/moment-with-locales.min.js',
+            ],
         ],
     ],
 ];
 ```
-This tile uses  `chart.js` to render the charts with the help of `Laravel Charts`  package see links to 
-documentation for both below:  
-
-- [Laravel Charts Documentation](https://charts.erik.cat/)
-- [Chart.js Documentation](https://www.chartjs.org/docs/latest/charts/)
-
 
 So that you can easily add your datasets and configure your charts exactly how you want them you need to create 
 a chart class that extends the `Fidum\ChartTile\Charts\Chart` abstract class. 
@@ -120,7 +127,8 @@ To use this you will have to use `@livewire` syntax over the component syntax in
 - `refreshIntervalInSeconds` use this to override the refresh rate of an individual tile (defaults to `300` seconds) 
 
 ## Examples
-We have provided some example charts to help get you started [here](examples).
+We have provided some example charts to help get you started [here](examples). 
+These are configured to render `chart.js` charts only.
 
 If you would like to use them don't forget to register them in your `AppServiceProvider::boot` method: 
 
