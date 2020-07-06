@@ -15,7 +15,7 @@ This tile uses the [Laravel Charts](https://charts.erik.cat/) to build the chart
 allows you to choose which frontend charting library you want to use. 
 
 If you want to use a different chart library from the default then just set the appropriate script urls in the 
-`dashboard.tiles.scripts` config described below in the [Usage](#usage) section.
+`dashboard.tiles.charts.scripts` config described below in the [Usage](#usage) section.
 
 ## Installation
 
