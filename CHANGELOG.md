@@ -2,6 +2,11 @@
 
 All notable changes to `fidum/laravel-dashboard-chart-tile` will be documented in this file
 
+## 3.1.0 - 2020-07-17
+
+**Fixed**
+- Fix scripts getting the latest versions that contain breaking changes ([#11](https://github.com/fidum/laravel-dashboard-chart-tile/pull/11))
+
 ## 3.0.3 - 2020-07-06
 
 **Added**
