@@ -9,7 +9,6 @@ use Livewire\Component;
 
 class ChartComponent extends Component
 {
-    /** @var Chart|string */
     public string $chartClass;
 
     public array $chartFilters;
@@ -26,7 +25,7 @@ class ChartComponent extends Component
         string $chartClass = null,
         array $chartFilters = [],
         int $refreshIntervalInSeconds = null
-    ) {
+    ): void {
         $this->height = $height;
         $this->position = $position;
         $this->chartFilters = $chartFilters;
@@ -38,6 +37,7 @@ class ChartComponent extends Component
             ?? config('dashboard.tiles.charts.refresh_interval_in_seconds', 300);
     }
 
+    /** @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View*/
     public function render()
     {
         return view('dashboard-chart-tiles::tile', [
