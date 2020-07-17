@@ -2,7 +2,6 @@
 
 namespace Fidum\ChartTile\Components;
 
-use Fidum\ChartTile\Charts\Chart;
 use Fidum\ChartTile\Charts\DefaultChart;
 use Illuminate\Support\Facades\Request;
 use Livewire\Component;
