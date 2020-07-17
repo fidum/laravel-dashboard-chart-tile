@@ -25,7 +25,7 @@ class ChartTileServiceProvider extends ServiceProvider
 
         Dashboard::script(config(
             'dashboard.tiles.charts.scripts.chartisan',
-            'https://unpkg.com/@chartisan/chartjs@2.0.3/dist/chartisan_chartjs.js'
+            'https://unpkg.com/@chartisan/chartjs@2.1.*/dist/chartisan_chartjs.umd.js'
         ));
 
         $this->publishes([
