@@ -4,7 +4,7 @@ All notable changes to `fidum/laravel-dashboard-chart-tile` will be documented i
 
 ## 3.1.1 - 2020-07-17
 
-**Changes**
+**Changed**
 - Switch to chartisan 2.1.* UMD build ([#12](https://github.com/fidum/laravel-dashboard-chart-tile/pull/12))
 
 ## 3.1.0 - 2020-07-17
