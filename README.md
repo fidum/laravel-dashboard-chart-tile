@@ -36,9 +36,9 @@ return [
         'charts' => [     
             'refresh_interval_in_seconds' => 300, // Default: 300 seconds (5 minutes)
             'scripts' => [     
-                'chart' => 'https://unpkg.com/chart.js@^2.9/dist/Chart.min.js',
-                'chartisan' => 'https://unpkg.com/@chartisan/chartjs@^2.0/dist/chartisan_chartjs.js', 
-                'moment' => 'https://unpkg.com/moment@^2.27/min/moment-with-locales.min.js',
+                'chart' => 'https://unpkg.com/chart.js@2.9.3/dist/Chart.min.js',
+                'chartisan' => 'https://unpkg.com/@chartisan/chartjs@2.0.3/dist/chartisan_chartjs.js', 
+                'moment' => 'https://unpkg.com/moment@2.27.0/min/moment-with-locales.min.js',
             ],
         ],
     ],
