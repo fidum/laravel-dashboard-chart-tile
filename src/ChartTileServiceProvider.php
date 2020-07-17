@@ -15,17 +15,17 @@ class ChartTileServiceProvider extends ServiceProvider
 
         Dashboard::script(config(
             'dashboard.tiles.charts.scripts.moment',
-            'https://unpkg.com/moment@^2.27/min/moment-with-locales.min.js'
+            'https://unpkg.com/moment@2.27.0/min/moment-with-locales.min.js'
         ));
 
         Dashboard::script(config(
             'dashboard.tiles.charts.scripts.chart',
-            'https://unpkg.com/chart.js@^2.9/dist/Chart.min.js'
+            'https://unpkg.com/chart.js@2.9.3/dist/Chart.min.js'
         ));
 
         Dashboard::script(config(
             'dashboard.tiles.charts.scripts.chartisan',
-            'https://unpkg.com/@chartisan/chartjs@^2.0/dist/chartisan_chartjs.js'
+            'https://unpkg.com/@chartisan/chartjs@2.0.3/dist/chartisan_chartjs.js'
         ));
 
         $this->publishes([
