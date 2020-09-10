@@ -32,8 +32,8 @@ class ChartComponentTest extends TestCase
             ->set('position', 'a1:a2')
             ->call('render');
 
-        $html = $result->payload['dom'];
-        $wireId = $result->payload['id'];
+        $html = $result->lastRenderedDom;
+        $wireId = $result->id();
 
         $result->assertViewHas('chartClass', DefaultChart::class)
             ->assertViewHas('refreshIntervalInSeconds', 300)
@@ -55,8 +55,8 @@ class ChartComponentTest extends TestCase
             ->set('height', '75vh')
             ->call('render');
 
-        $html = $result->payload['dom'];
-        $wireId = $result->payload['id'];
+        $html = $result->lastRenderedDom;
+        $wireId = $result->id();
 
         $result->assertViewHas('chartClass', ExamplePieChart::class)
             ->assertViewHas('refreshIntervalInSeconds', 60)
