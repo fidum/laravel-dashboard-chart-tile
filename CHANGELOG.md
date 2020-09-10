@@ -2,6 +2,19 @@
 
 All notable changes to `fidum/laravel-dashboard-chart-tile` will be documented in this file
 
+## 4.0.0 - 2020-09-10
+
+**Added**
+- Added Laravel 8 Support
+- Added `spatie/laravel-dashboard` 2.0.0 support
+
+**Changed**
+- Updated `consoletvs/charts` to 7.1
+
+**Breaking**
+- Dropped Laravel 7 support
+- Dropped `spatie/laravel-dashboard` 1.x support
+
 ## 3.1.1 - 2020-07-17
 
 **Changed**
