@@ -28,8 +28,8 @@
         "nunomaduro/laravel-mojito": "^0.2.4",
         "orchestra/testbench": "^6.0",
         "phpunit/phpunit": "^9.3",
-        "psalm/plugin-laravel": "dev-master",
-        "vimeo/psalm": "^3.11"
+        "psalm/plugin-laravel": "^1.4",
+        "vimeo/psalm": "^4.0"
     },
     "autoload": {
         "psr-4": {
