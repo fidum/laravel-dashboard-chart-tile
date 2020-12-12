@@ -2,6 +2,11 @@
 
 All notable changes to `fidum/laravel-dashboard-chart-tile` will be documented in this file
 
+## 4.0.1 - 2020-12-12
+
+**Added**
+- Added PHP 8 Support
+
 ## 4.0.0 - 2020-09-10
 
 **Added**
