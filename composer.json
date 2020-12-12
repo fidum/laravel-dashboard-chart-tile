@@ -22,11 +22,11 @@
         "consoletvs/charts": "^7.2",
         "illuminate/console": "^8.0",
         "illuminate/support": "^8.0",
+        "orchestra/testbench": "^6.6",
         "spatie/laravel-dashboard": "^2.0.1"
     },
     "require-dev": {
         "nunomaduro/laravel-mojito": "^0.2.6",
-        "orchestra/testbench": "^6.5",
         "phpunit/phpunit": "^9.5",
         "psalm/plugin-laravel": "^1.4",
         "vimeo/psalm": "^4.3"
