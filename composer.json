@@ -26,6 +26,7 @@
         "spatie/laravel-dashboard": "^2.0"
     },
     "require-dev": {
+        "mockery/mockery": "^1.4",
         "nunomaduro/laravel-mojito": "^0.2.6",
         "phpunit/phpunit": "^9.5",
         "psalm/plugin-laravel": "^1.4",
