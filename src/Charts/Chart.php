@@ -2,25 +2,22 @@
 
 namespace Fidum\ChartTile\Charts;
 
-use ConsoleTVs\Charts\BaseChart;
-use Illuminate\Support\Str;
+use ConsoleTVs\Charts\Classes\Chartjs\Chart as BaseChart;
 
-abstract class Chart extends BaseChart
+class Chart extends BaseChart
 {
-    public function colors(): array
+    /** @param int|string $height */
+    public function height($height): self
     {
-        return [];
+        $this->height = $height;
+
+        return $this;
     }
 
-    public function route(array $params = []): string
+    public function id(string $id): self
     {
-        $prefix = config('charts.global_route_name_prefix', '');
-        $name = $this->routeName ?? $this->name ?? Str::snake(class_basename(static::class));
+        $this->id = 'chart_'.$id;
 
-        return route(($prefix ? "$prefix." : '').$name, $params);
+        return $this;
     }
-
-    abstract public function type(): string;
-
-    abstract public function options(): array;
 }

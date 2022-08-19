@@ -9,14 +9,6 @@ Show off your charting skills with this easy to use tile. Supports line, bar, pi
 
 ![Preview](docs/preview.png)
 
-This tile uses the [Laravel Charts](https://charts.erik.cat/) to build the charts and by default renders the charts using [Chart.js](https://www.chartjs.org/docs/latest/charts/).
-
-[Laravel Charts](https://charts.erik.cat/) is built on top of a framework agnostic package called [Chartisan](https://chartisan.dev/) which 
-allows you to choose which frontend charting library you want to use. 
-
-If you want to use a different chart library from the default then just set the appropriate script urls in the 
-`dashboard.tiles.charts.scripts` config described below in the [Usage](#usage) section.
-
 ## Installation
 
 You can install the package via composer:
@@ -35,18 +27,19 @@ return [
     'tiles' => [
         'charts' => [     
             'refresh_interval_in_seconds' => 300, // Default: 300 seconds (5 minutes)
-            'scripts' => [     
-                'chart' => 'https://unpkg.com/chart.js@2.9.3/dist/Chart.min.js',
-                'chartisan' => 'https://unpkg.com/@chartisan/chartjs@2.1.*/dist/chartisan_chartjs.umd.js', 
-                'moment' => 'https://unpkg.com/moment@2.27.0/min/moment-with-locales.min.js',
-            ],
         ],
     ],
 ];
 ```
+This tile uses  `chart.js` to render the charts with the help of `Laravel Charts`  package see links to 
+documentation for both below:  
+
+- [Laravel Charts Documentation](https://charts.erik.cat/)
+- [Chart.js Documentation](https://www.chartjs.org/docs/latest/charts/)
+
 
 So that you can easily add your datasets and configure your charts exactly how you want them you need to create 
-a chart class that extends the `Fidum\ChartTile\Charts\Chart` abstract class. 
+a chart class that implements the `Fidum\ChartTile\Contracts\ChartFactory` interface. 
 
 See chart example below:
 
@@ -54,13 +47,17 @@ See chart example below:
 namespace App\Charts;
 
 use Carbon\Carbon;
-use Chartisan\PHP\Chartisan;
 use Fidum\ChartTile\Charts\Chart;
-use Illuminate\Http\Request;
+use Fidum\ChartTile\Contracts\ChartFactory;
 
-class DailyUsersChart extends Chart
+class ExampleBarChart implements ChartFactory
 {
-    public function handler(Request $request): Chartisan
+    public static function make(array $settings): ChartFactory
+    {
+        return new static;
+    }
+
+    public function chart(): Chart
     {
         $date = Carbon::now()->subMonth()->startOfDay();
 
@@ -71,34 +68,20 @@ class DailyUsersChart extends Chart
             ];
         });
 
-        return Chartisan::build()
+        $chart = (new Chart)
             ->labels($data->pluck('x')->toArray())
-            ->dataset('Example Data', $data->toArray());
-    }
+            ->options([
+                  'responsive' => true,
+                  'maintainAspectRatio' => false,
+                  // etc...
+             ], true);
 
-    public function type(): string
-    {
-        return 'bar';
-    }
+        $chart->dataset('Example Data', 'bar', $data->toArray())
+            ->backgroundColor('#848584');
 
-    public function options(): array
-    {
-        return [
-            'responsive' => true,
-            'maintainAspectRatio' => false,
-            // etc ...
-        ];
+        return $chart;
     }
 }
-```
-
-Then you must register the chart in your `AppServiceProvider::boot` method. 
-See [Laravel Charts > Register the chart](https://charts.erik.cat/guide/create_charts.html#register-the-chart) for more information:
-
-```php
-app(ConsoleTVs\Charts\Registrar::class)->register([
-    App\Charts\DailyUsersChart::class
-]);
 ```
 
 In your dashboard view you can use the below component as many times as needed. Pass your chart class 
@@ -106,18 +89,17 @@ reference to the component and that will be used to generate the chart.
 
 ```blade
 <x-dashboard>
-    <livewire:chart-tile chartClass="{{App\Charts\DailyUsersChart::class}}" position="a1:a3" />
+    <livewire:chart-tile chartFactory="{{App\Charts\DailyUsersChart::class}}" position="a1:a3" />
 </x-dashboard>
 ```
 
 ### Optional properties: 
-- `chartFilters` optional key value array of settings that is passed to the request and can be accessed using 
-the `Request` class passed to your charts `handler` method. 
+- `chartFilters` optional key value array of settings that is passed to your chart `static::make` method. 
 **Only use this for passing simple values `strings`, `integers`, `arrays` etc.** 
 To use this you will have to use `@livewire` syntax over the component syntax in order set the array value. 
 ```blade
 @livewire('chart-tile', [
-    'chartClass' => App\Charts\DailyUsersChart::class, 
+    'chartFactory' => App\Charts\DailyUsersChart::class, 
     'chartFilters' => ['type' => 'customer'],
 ])
 ```
@@ -127,33 +109,21 @@ To use this you will have to use `@livewire` syntax over the component syntax in
 - `refreshIntervalInSeconds` use this to override the refresh rate of an individual tile (defaults to `300` seconds) 
 
 ## Examples
-We have provided some example charts to help get you started [here](examples). 
-These are configured to render `chart.js` charts only.
-
-If you would like to use them don't forget to register them in your `AppServiceProvider::boot` method: 
-
-```php
-app(ConsoleTVs\Charts\Registrar::class)->register([
-    Fidum\ChartTile\Examples\ExampleBarChart::class,
-    Fidum\ChartTile\Examples\ExampleLineChart::class,
-    Fidum\ChartTile\Examples\ExamplePieChart::class,
-    Fidum\ChartTile\Examples\ExampleDoughnutChart::class,
-]);
-```
-
+We have provided some chart factory examples to help get you started [here](examples). 
 You can use the below dashboard layout to have an instant showcase of these examples:
+
 ```blade
 <x-dashboard>
-    <livewire:chart-tile chartClass="{{\Fidum\ChartTile\Examples\ExamplePieChart::class}}" position="a1:a2" />
-    <livewire:chart-tile chartClass="{{\Fidum\ChartTile\Examples\ExampleDoughnutChart::class}}" position="b1:b2" />
-    <livewire:chart-tile chartClass="{{\Fidum\ChartTile\Examples\ExamplePieChart::class}}" position="c1:c2" />
-    <livewire:chart-tile chartClass="{{\Fidum\ChartTile\Examples\ExampleDoughnutChart::class}}" position="d1:d2" />
-    <livewire:chart-tile chartClass="{{\Fidum\ChartTile\Examples\ExampleBarChart::class}}" position="a3:b4" />
-    <livewire:chart-tile chartClass="{{\Fidum\ChartTile\Examples\ExampleLineChart::class}}" position="c3:d4" />
-    <livewire:chart-tile chartClass="{{\Fidum\ChartTile\Examples\ExampleLineChart::class}}" position="a5:b6" />
-    <livewire:chart-tile chartClass="{{\Fidum\ChartTile\Examples\ExampleBarChart::class}}" position="c5:d6" />
-    <livewire:chart-tile chartClass="{{\Fidum\ChartTile\Examples\ExampleBarChart::class}}" position="a7:b8" />
-    <livewire:chart-tile chartClass="{{\Fidum\ChartTile\Examples\ExampleLineChart::class}}" position="c7:d8" />
+    <livewire:chart-tile chartFactory="{{\Fidum\ChartTile\Examples\ExamplePieChart::class}}" position="a1:a2" height="140%"/>
+    <livewire:chart-tile chartFactory="{{\Fidum\ChartTile\Examples\ExampleDoughnutChart::class}}" position="b1:b2" height="140%"/>
+    <livewire:chart-tile chartFactory="{{\Fidum\ChartTile\Examples\ExamplePieChart::class}}" position="c1:c2" height="140%" />
+    <livewire:chart-tile chartFactory="{{\Fidum\ChartTile\Examples\ExampleDoughnutChart::class}}" position="d1:d2" height="140%" />
+    <livewire:chart-tile chartFactory="{{\Fidum\ChartTile\Examples\ExampleBarChart::class}}" position="a3:b4" />
+    <livewire:chart-tile chartFactory="{{\Fidum\ChartTile\Examples\ExampleLineChart::class}}" position="c3:d4" />
+    <livewire:chart-tile chartFactory="{{\Fidum\ChartTile\Examples\ExampleLineChart::class}}" position="a5:b6" />
+    <livewire:chart-tile chartFactory="{{\Fidum\ChartTile\Examples\ExampleBarChart::class}}" position="c5:d6" />
+    <livewire:chart-tile chartFactory="{{\Fidum\ChartTile\Examples\ExampleBarChart::class}}" position="a7:b8" />
+    <livewire:chart-tile chartFactory="{{\Fidum\ChartTile\Examples\ExampleLineChart::class}}" position="c7:d8" />
 </x-dashboard>
 ```
 

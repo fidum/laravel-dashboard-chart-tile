@@ -20,11 +20,15 @@ jobs:
                   extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick, fileinfo
                   coverage: none
 
+            - name: Get composer cache directory
+              id: composer-cache
+              run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
             - name: Cache composer dependencies
               uses: actions/cache@v2
               with:
-                  path: vendor
-                  key: composer-${{ hashFiles('composer.lock') }}
+                path: ${{ steps.composer-cache.outputs.dir }}
+                key: composer-${{ hashFiles('**/composer.json') }}
 
             - name: Run composer install
               run: composer install -n --prefer-dist
