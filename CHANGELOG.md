@@ -2,6 +2,16 @@
 
 All notable changes to `fidum/laravel-dashboard-chart-tile` will be documented in this file
 
+## 5.0.0 - 2022-08-19
+
+### What's Changed
+
+- Revert to ConsoleTvs/Charts v6 by @dmason30 in https://github.com/fidum/laravel-dashboard-chart-tile/pull/24
+
+> If you're wondering what happened to the ConsoleTVs/Charts v7 version please read this: https://github.com/ConsoleTVs/Charts/issues/1#issuecomment-1208550258
+
+**Full Changelog**: https://github.com/fidum/laravel-dashboard-chart-tile/compare/4.1.0...5.0.0
+
 ## 4.1.0 - 2022-02-10
 
 ## What's Changed
