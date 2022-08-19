@@ -1,3 +1,6 @@
+> **Warning**
+> If you're wondering what happened to the ConsoleTVs/Charts v7 version please read this: https://github.com/ConsoleTVs/Charts/issues/1#issuecomment-1208550258
+
 # Laravel Dashboard Charting Tile
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/fidum/laravel-dashboard-chart-tile.svg?style=for-the-badge)](https://packagist.org/packages/fidum/laravel-dashboard-chart-tile)
@@ -22,7 +25,7 @@ If you want to use a different chart library from the default then just set the 
 You can install the package via composer:
 
 ```bash
-composer require fidum/laravel-dashboard-chart-tile
+composer require fidum/laravel-dashboard-chart-tile:^4.0
 ```
 
 ## Usage
