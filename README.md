@@ -22,7 +22,7 @@ If you want to use a different chart library from the default then just set the 
 You can install the package via composer:
 
 ```bash
-composer require fidum/laravel-dashboard-chart-tile
+composer require fidum/laravel-dashboard-chart-tile:^3.0
 ```
 
 ## Usage
