@@ -3,13 +3,17 @@
 namespace Fidum\ChartTile\Examples;
 
 use Carbon\Carbon;
-use Chartisan\PHP\Chartisan;
 use Fidum\ChartTile\Charts\Chart;
-use Illuminate\Http\Request;
+use Fidum\ChartTile\Contracts\ChartFactory;
 
-class ExampleBarChart extends Chart
+class ExampleBarChart implements ChartFactory
 {
-    public function handler(Request $request): Chartisan
+    public static function make(array $settings): ChartFactory
+    {
+        return new static;
+    }
+
+    public function chart(): Chart
     {
         $date = Carbon::now()->subMonth()->startOfDay();
 
@@ -20,17 +24,17 @@ class ExampleBarChart extends Chart
             ];
         });
 
-        return Chartisan::build()
+        $chart = (new Chart())
             ->labels($data->pluck('x')->toArray())
-            ->dataset('Example Data', $data->toArray());
+            ->options($this->options(), true);
+
+        $chart->dataset('Example Data', 'bar', $data->toArray())
+            ->backgroundColor('#848584');
+
+        return $chart;
     }
 
-    public function type(): string
-    {
-        return 'bar';
-    }
-
-    public function options(): array
+    private function options(): array
     {
         return [
             'responsive' => true,
@@ -60,10 +64,5 @@ class ExampleBarChart extends Chart
                 ]],
             ],
         ];
-    }
-
-    public function colors(): array
-    {
-        return ['#848584'];
     }
 }
