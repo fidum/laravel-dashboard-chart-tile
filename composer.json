@@ -19,7 +19,7 @@
     ],
     "require": {
         "php": "^7.4|^8.0",
-        "consoletvs/charts": "^6.0",
+        "consoletvs/charts": "^6.5.1",
         "spatie/laravel-dashboard": "^2.1"
     },
     "require-dev": {
