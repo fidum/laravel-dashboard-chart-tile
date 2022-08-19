@@ -21,7 +21,8 @@ class ChartTest extends TestCase
 
     private function makeClass(): Chart
     {
-        return new class extends Chart {
+        return new class extends Chart
+        {
             public function handler(Request $request): Chartisan
             {
                 return Chartisan::build();
