@@ -3,7 +3,7 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/fidum/laravel-dashboard-chart-tile.svg?style=for-the-badge)](https://packagist.org/packages/fidum/laravel-dashboard-chart-tile)
 [![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/fidum/laravel-dashboard-chart-tile/run-tests.yml?branch=main&style=for-the-badge)](https://github.com/fidum/laravel-dashboard-chart-tile/actions?query=workflow%3Arun-tests+branch%3Amaster)
 [![Codecov](https://img.shields.io/codecov/c/github/fidum/laravel-dashboard-chart-tile?logo=codecov&logoColor=white&style=for-the-badge)](https://codecov.io/gh/fidum/laravel-dashboard-chart-tile)
-[![Twitter Follow](https://img.shields.io/twitter/follow/danmasonmp?label=Follow&logo=twitter&style=for-the-badge)](https://twitter.com/danmasonmp)  
+[![Twitter Follow](https://img.shields.io/badge/follow-%40danmasonmp-1DA1F2?logo=twitter&style=for-the-badge)](https://twitter.com/danmasonmp)  
 
 Show off your charting skills with this easy to use tile. Supports line, bar, pie, doughnut and many more! 
 
