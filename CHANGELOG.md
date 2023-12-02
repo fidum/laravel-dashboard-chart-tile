@@ -2,6 +2,15 @@
 
 All notable changes to `fidum/laravel-dashboard-chart-tile` will be documented in this file
 
+## 6.0.0 - 2023-12-02
+
+### What's Changed
+
+* Run tests on PHP 8.3 by @dmason30 in https://github.com/fidum/laravel-dashboard-chart-tile/pull/26
+* Upgrade to Laravel Dashboard 3.x by @dmason30 in https://github.com/fidum/laravel-dashboard-chart-tile/pull/27
+
+**Full Changelog**: https://github.com/fidum/laravel-dashboard-chart-tile/compare/5.0.1...6.0.0
+
 ## 5.0.1 - 2023-02-08
 
 ### What's Changed
