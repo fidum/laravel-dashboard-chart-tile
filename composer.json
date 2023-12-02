@@ -20,11 +20,10 @@
     "require": {
         "php": "^7.4|^8.0",
         "consoletvs/charts": "^6.6.0",
-        "spatie/laravel-dashboard": "^2.1.4"
+        "spatie/laravel-dashboard": "^3.0"
     },
     "require-dev": {
         "mockery/mockery": "^1.4",
-        "nunomaduro/laravel-mojito": "^0.2.6",
         "orchestra/testbench": "^6.0|^7.0|^8.0",
         "phpunit/phpunit": "^9.3",
         "vimeo/psalm": "^4.3"

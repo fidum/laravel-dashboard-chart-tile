@@ -5,7 +5,6 @@ namespace Fidum\ChartTile\Tests;
 use ConsoleTVs\Charts\ChartsServiceProvider;
 use Fidum\ChartTile\ChartTileServiceProvider;
 use Livewire\LivewireServiceProvider;
-use NunoMaduro\LaravelMojito\MojitoServiceProvider;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 use Spatie\Dashboard\DashboardServiceProvider;
 
@@ -21,10 +20,9 @@ class TestCase extends BaseTestCase
     protected function getPackageProviders($app): array
     {
         return [
-            ChartsServiceProvider::class,
-            DashboardServiceProvider::class,
             LivewireServiceProvider::class,
-            MojitoServiceProvider::class,
+            DashboardServiceProvider::class,
+            ChartsServiceProvider::class,
             ChartTileServiceProvider::class,
         ];
     }

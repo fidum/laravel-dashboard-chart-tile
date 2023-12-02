@@ -8,5 +8,9 @@
 </x-dashboard-tile>
 
 @push('scripts')
-    {!! $chart->script() !!}
+    {!! str_replace(
+        '<!--[if ENDBLOCK]><![endif]-->',
+        '',
+        str_replace('<!--[if BLOCK]><![endif]-->', '', $chart->script()),
+    ) !!}
 @endpush
