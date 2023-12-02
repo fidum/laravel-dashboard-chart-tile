@@ -18,13 +18,13 @@
         }
     ],
     "require": {
-        "php": "^7.4|^8.0",
+        "php": "^8.1",
         "consoletvs/charts": "^6.6.0",
         "spatie/laravel-dashboard": "^3.0"
     },
     "require-dev": {
         "mockery/mockery": "^1.4",
-        "orchestra/testbench": "^7.0|^8.0",
+        "orchestra/testbench": "^8.0",
         "phpunit/phpunit": "^9.6",
         "vimeo/psalm": "^4.3"
     },
