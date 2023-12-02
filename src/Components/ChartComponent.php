@@ -21,6 +21,8 @@ class ChartComponent extends Component
 
     public string $wireId;
 
+    public string $eventName;
+
     public function mount(
         string $position = '',
         string $height = '100%',
@@ -33,7 +35,8 @@ class ChartComponent extends Component
         $this->position = $position;
         $this->chartFactory = $chartFactory ?? DefaultChartFactory::class;
         $this->chartFilters = $chartFilters;
-        $this->wireId = $wireId ?? $this->id;
+        $this->wireId = $wireId ?? $this->getId();
+        $this->eventName = 'chartDataRefreshed'.$this->wireId;
 
         $this->refreshIntervalInSeconds = $refreshIntervalInSeconds
             ?? config('dashboard.tiles.charts.refresh_interval_in_seconds', 300);
@@ -61,6 +64,7 @@ class ChartComponent extends Component
             'wireId' => $this->wireId,
             'chart' => $this->chart(),
             'chartFactory' => $this->chartFactory,
+            'eventName' => $this->eventName,
         ];
     }
 }

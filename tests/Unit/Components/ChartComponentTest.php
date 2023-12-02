@@ -7,59 +7,46 @@ use Fidum\ChartTile\Examples\ExamplePieChart;
 use Fidum\ChartTile\Factories\DefaultChartFactory;
 use Fidum\ChartTile\Tests\TestCase;
 use Livewire\Livewire;
-use Livewire\Testing\TestableLivewire;
-use NunoMaduro\LaravelMojito\ViewAssertion;
 
 class ChartComponentTest extends TestCase
 {
     public function testMount()
     {
-        $component = new ChartComponent('');
-        $component->mount('a1:a2', '100vh');
-
-        $this->assertSame('a1:a2', $component->position);
-        $this->assertSame(DefaultChartFactory::class, $component->chartFactory);
-        $this->assertSame($component->id, $component->wireId);
-        $this->assertSame($component->refreshIntervalInSeconds, 300);
+        Livewire::test(ChartComponent::class)
+            ->assertSet('position', '')
+            ->assertSet('chartFactory', DefaultChartFactory::class)
+            ->assertSet('refreshIntervalInSeconds', 300);
     }
 
     public function testRender()
     {
-        /** @var TestableLivewire $result */
-        $result = Livewire::test(ChartComponent::class)
-            ->set('position', 'a1:a2')
-            ->call('render');
+        $test = Livewire::test(ChartComponent::class);
 
-        $html = $result->lastRenderedDom;
-        $wireId = $result->id();
+        $wireId = $test->id();
 
-        $result->assertViewHas('chartFactory', DefaultChartFactory::class)
+        $test->assertViewHas('chartFactory', DefaultChartFactory::class)
             ->assertViewHas('refreshIntervalInSeconds', 300)
             ->assertViewHas('wireId', $wireId)
-            ->assertViewHas('height', '100%');
-
-        (new ViewAssertion($html))
-            ->contains('<canvas style="display: none;" id="chart_'.$wireId.'"  height=\'100%\' ></canvas>');
+            ->assertViewHas('height', '100%')
+            ->assertSeeHtml("chartDataRefreshed$wireId")
+            ->assertSeeHtml('<canvas style="display: none;" id="chart_'.$wireId.'"  height=\'100%\' ></canvas>');
     }
 
     public function testRenderCustomProperties()
     {
-        /** @var TestableLivewire $result */
-        $result = Livewire::test(ChartComponent::class)
-            ->set('chartFactory', ExamplePieChart::class)
-            ->set('refreshIntervalInSeconds', 60)
-            ->set('wireId', 'abc')
-            ->set('height', '75vh')
-            ->call('render');
+        $test = Livewire::test(ChartComponent::class, [
+            'position' => 'a1:a2',
+            'height' => '75vh',
+            'chartFactory' => ExamplePieChart::class,
+            'wireId' => $wireId = 'abc',
+            'refreshIntervalInSeconds' => 60,
+        ]);
 
-        $html = $result->lastRenderedDom;
-
-        $result->assertViewHas('chartFactory', ExamplePieChart::class)
+        $test
+            ->assertViewHas('chartFactory', ExamplePieChart::class)
             ->assertViewHas('refreshIntervalInSeconds', 60)
-            ->assertViewHas('wireId', 'abc')
-            ->assertViewHas('height', '75vh');
-
-        (new ViewAssertion($html))
-            ->contains('<canvas style="display: none;" id="chart_abc"  height=\'75vh\' ></canvas>');
+            ->assertViewHas('height', '75vh')
+            ->assertSeeHtml("chartDataRefreshed$wireId")
+            ->assertSeeHtml('<canvas style="display: none;" id="chart_'.$wireId.'"  height=\'75vh\' ></canvas>');
     }
 }
