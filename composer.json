@@ -25,7 +25,7 @@
     "require-dev": {
         "mockery/mockery": "^1.4",
         "orchestra/testbench": "^8.0",
-        "phpunit/phpunit": "^9.6",
+        "phpunit/phpunit": "^10.4",
         "vimeo/psalm": "^4.3"
     },
     "autoload": {
