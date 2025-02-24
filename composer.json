@@ -18,7 +18,7 @@
         }
     ],
     "require": {
-        "php": "^8.1",
+        "php": "^8.3",
         "consoletvs/charts": "^6.6.0",
         "spatie/laravel-dashboard": "^3.0"
     },
