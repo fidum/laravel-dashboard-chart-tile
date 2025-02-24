@@ -18,14 +18,14 @@
         }
     ],
     "require": {
-        "php": "^8.1",
+        "php": "^8.3",
         "consoletvs/charts": "^6.6.0",
         "spatie/laravel-dashboard": "^3.0"
     },
     "require-dev": {
         "mockery/mockery": "^1.4",
-        "orchestra/testbench": "^8.0|^9.0",
-        "phpunit/phpunit": "^10.5"
+        "orchestra/testbench": "^8.0|^9.0|^10.0",
+        "phpunit/phpunit": "^10.5|^11.5.3"
     },
     "autoload": {
         "psr-4": {
