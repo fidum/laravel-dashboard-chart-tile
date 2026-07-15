@@ -2,6 +2,14 @@
 
 All notable changes to `fidum/laravel-dashboard-chart-tile` will be documented in this file
 
+## 6.3.0 - 2026-07-15
+
+### What's Changed
+
+* Adds Laravel 13.x Support by @dmason30 in https://github.com/fidum/laravel-dashboard-chart-tile/pull/33
+
+**Full Changelog**: https://github.com/fidum/laravel-dashboard-chart-tile/compare/6.2.0...6.3.0
+
 ## 6.2.0 - 2025-02-24
 
 ### What's Changed
