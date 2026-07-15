@@ -6,24 +6,32 @@ jobs:
   test:
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        php: [8.3, 8.4]
-        laravel: [10.*, 11.*, 12.*]
+        php: [8.3, 8.4, 8.5]
+        laravel: [10.*, 11.*, 12.*, 13.*]
         dependency-version: [prefer-lowest, prefer-stable]
+        exclude:
+          - laravel: 10.*
+            php: 8.5
+          - laravel: 11.*
+            php: 8.5
         include:
           - laravel: 10.*
             testbench: ^8.0
           - laravel: 11.*
-            testbench: ^9.0
+            testbench: ^9.2
           - laravel: 12.*
             testbench: ^10.0
+          - laravel: 13.*
+            testbench: ^11.0
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.dependency-version }} - ${{ matrix.os }}
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -34,10 +42,10 @@ jobs:
 
       - name: Get composer cache directory
         id: composer-cache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+        run: echo "dir=$(composer config cache-files-dir)" >> "$GITHUB_OUTPUT"
 
       - name: Cache composer dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: dependencies-laravel-${{ matrix.laravel }}-php-${{ matrix.php }}-${{ hashFiles('**/composer.json') }}
@@ -53,6 +61,6 @@ jobs:
         run: vendor/bin/phpunit
 
       - name: Upload PHP test coverage report
-        uses: codecov/codecov-action@v1
+        uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
